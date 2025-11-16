@@ -5,6 +5,16 @@ import { Box, Typography } from '@mui/material';
 import { useCallback, useState } from 'react';
 import useCategoryOptions from '@/features/product-list/hooks/useCategoryOptions';
 import type { IProductListFilter } from '@/features/product-list/types';
+import { styled } from '@mui/material/styles';
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 'fit-content',
+  },
+}));
 
 interface IProductListFilterProps {
   defaultFilter: IProductListFilter;
@@ -65,21 +75,21 @@ function ProductListFilter({
     <form onSubmit={handleSubmit}>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Typography variant="h1">Product Catagory</Typography>
-        <Box className="search-box">
+        <Box className="search-container">
           <Box
             sx={{
               display: 'grid',
               gap: 2,
               gridTemplateColumns: {
-                sm: '1fr',
-                md: '1fr 1fr',
+                xs: '1fr',
+                sm: '1fr 1fr',
               },
             }}
           >
             <TextField
-              data-testid="search-input-product-name"
               label="Product Name"
               variant="outlined"
+              name="search-product-name"
               sx={{ width: '100%' }}
               value={searchProductName}
               onChange={handleSearchProductNameChange}
@@ -95,6 +105,7 @@ function ProductListFilter({
                   variant="outlined"
                   label="Catagory"
                   placeholder="Select"
+                  name="catagory-filter"
                   sx={{ width: '100%' }}
                 />
               )}
@@ -109,13 +120,41 @@ function ProductListFilter({
             }}
             checked={isInStock}
           />
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button type="submit" variant="contained">
-              Search
-            </Button>
-            <Button onClick={handleReset} variant="outlined">
-              Reset
-            </Button>
+          <Box
+            sx={{
+              display: 'grid',
+              justifyContent: 'space-between',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: '1fr 30%',
+              },
+              gap: 2,
+            }}
+          >
+            <Box
+              sx={{
+                display: {
+                  xs: 'grid',
+                  sm: 'flex',
+                },
+                gridTemplateColumns: {
+                  xs: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
+              <StyledButton type="submit" variant="contained">
+                Search
+              </StyledButton>
+              <StyledButton onClick={handleReset} variant="outlined">
+                Reset
+              </StyledButton>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <StyledButton onClick={handleReset} variant="contained">
+                Add
+              </StyledButton>
+            </Box>
           </Box>
         </Box>
       </Box>

@@ -57,7 +57,7 @@ export const ProductListColumns = ({
       field: 'category',
       headerName: 'Catagory',
       sortable: false,
-      width: 180,
+      width: 120,
       renderCell: ({ row }) => {
         return mappingCategoryLabel(row.category);
       },
@@ -85,20 +85,36 @@ export const ProductListColumns = ({
         return row.isInstock ? 'In Stock' : 'Out of Stock';
       },
     },
-    // {
-    //   field: 'image',
-    //   headerName: 'Image',
-    //   sortable: false,
-    //   width: 150,
-    //   renderCell: ({ row }) => {
-    //     console.log(row.image);
-    //     return (
-    //       <Box sx={{ width: 100, height: 100 }}>
-    //         <img src={row.image} alt={row.name} />
-    //       </Box>
-    //     );
-    //   },
-    // },
+    {
+      field: 'image',
+      headerName: 'Image',
+      sortable: false,
+      width: 150,
+      headerAlign: 'center',
+      align: 'center',
+      renderCell: ({ row }) => {
+        return (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100%',
+            }}
+          >
+            <img
+              style={{
+                width: '100px',
+                height: 'auto',
+              }}
+              loading="lazy"
+              src={row.image}
+              alt={row.name}
+            />
+          </Box>
+        );
+      },
+    },
     {
       headerName: '',
       field: 'Action',

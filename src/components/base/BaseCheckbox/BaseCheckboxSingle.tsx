@@ -11,7 +11,11 @@ interface BaseCheckBoxSingleProps extends CheckboxProps {
 
 function BaseCheckBoxSingle({ label, ...props }: BaseCheckBoxSingleProps) {
   return (
-    <FormGroup>
+    <FormGroup
+      sx={{
+        width: 'fit-contet',
+      }}
+    >
       <FormControlLabel control={<Checkbox {...props} />} label={label} />
     </FormGroup>
   );

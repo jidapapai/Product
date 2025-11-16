@@ -25,6 +25,7 @@ function ProductList({
   return (
     <Box sx={{ width: '100%' }}>
       <DataGrid
+        sx={{ height: '100%', width: '100%' }}
         data-testid="product-list"
         rows={data}
         columns={ProductListColumns({

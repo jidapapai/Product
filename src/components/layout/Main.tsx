@@ -14,6 +14,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
         maxWidth: '1280px',
         margin: '20px auto',
         padding: '20px',
+        boxSizing: 'border-box',
       }}
     >
       {children}

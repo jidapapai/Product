@@ -8,6 +8,7 @@ import {
   MenuItem,
   CardActions,
   Button,
+  Typography,
 } from '@mui/material';
 import { EModalMode } from '@/enums/control';
 import type { ProductListItemResponse } from '@/features/product-list/types';
@@ -111,7 +112,7 @@ function ProductDetailModal({
       <Box sx={style}>
         <form onSubmit={handleSubmit}>
           <Card sx={{ width: '100%' }}>
-            <CardHeader title={title} />
+            <CardHeader title={<Typography variant="h6">{title}</Typography>} />
             <CardContent
               sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
             >
@@ -127,6 +128,7 @@ function ProductDetailModal({
               >
                 <img
                   style={{ width: '', height: '100%', objectFit: 'cover' }}
+                  loading="lazy"
                   src={productDetail?.image || ''}
                   alt={productDetail?.name || ''}
                 />
@@ -140,8 +142,8 @@ function ProductDetailModal({
                 onChange={handleChange}
               />
               <BaseSelect
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="category-label"
+                id="category-select"
                 value={productDetail?.category || ''}
                 label="Category"
                 disabled={mode === EModalMode.VIEW}

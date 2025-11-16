@@ -55,7 +55,6 @@ function ProductListPage() {
 
   const handleSortModelChange = useCallback(
     (model: GridSortModel) => {
-      console.log('model', model);
       if (model.length === 0) {
         setFilter((prev: IProductListFilter) => ({
           ...prev,
