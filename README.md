@@ -60,11 +60,17 @@ The lint command will check the code style of the app.
 npm run lint
 ```
 
-
 To fix the code style of the app execute the following command.
 
 ```bash
 npm run lint:fix
+```
+
+#### Testing
+To run the tests execute the following command.
+
+```bash
+npm run test
 ```
 
 
