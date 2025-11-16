@@ -1,0 +1,18 @@
+[
+    {
+        "value": "audio",
+        "name": "Audio"
+    },
+    {
+        "value": "display",
+        "name": "Display"
+    },
+    {
+        "value": "keyboard",
+        "name": "Keyboard"
+    },
+    {
+        "value": "accessory",
+        "name": "Accessory"
+    }
+]
