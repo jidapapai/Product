@@ -78,7 +78,7 @@ npm run lint:fix
 
 ## Trade-offs or assumptions
 - This project was created with Vite, and Vite is incompatibility with Jest according to the documentation[https://jestjs.io/docs/getting-started#using-vite], alternative way is to use Vitest and React Testing Library or use `vite-jest`[https://github.com/haoqunjiang/vite-jest] library.
-- Since aiming to build a scalable structure, I designed to use `bulletproof-react`[https://reacthandbook.dev/project-standards#file-directory-structures] to refer the file directory structure.
+- Since aiming to build a scalable structure, I decided to use `bulletproof-react`[https://reacthandbook.dev/project-standards#file-directory-structures] to reference the file directory structure.
 
 ## Anything you'd improve with more time
 - Performance analysis and improvement
