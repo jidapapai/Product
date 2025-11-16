@@ -6,4 +6,5 @@ export enum ESortOrder {
 export enum EModalMode {
   VIEW = 'view',
   EDIT = 'edit',
+  CREATE = 'create',
 }

@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+# Product Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prerequisites:
 
-Currently, two official plugins are available:
+- Node 20+
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## React Compiler
+To set up the app execute the following commands.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone git@github.com:jidapapai/Product.git
+cd Product
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+#### Runs the app in the development mode.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To run the app in the development mode execute the following command.
+
+```bash
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+#### Builds the app for production mode.
+
+To build the app for production mode execute the following command.
+
+```bash
+npm run build
+```
+
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+To preview the app in the production mode execute the following command.
+
+```bash
+npm run preview
+```
+
+The vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173. To check if the production build looks OK in your local environment.
+
+
+#### Type checking
+
+```bash
+npm run type-check
+```
+
+The type-check command will check the types of the app.
+
+#### Linting
+The lint command will check the code style of the app.
+
+```bash
+npm run lint
+```
+
+
+To fix the code style of the app execute the following command.
+
+```bash
+npm run lint:fix
+```
+
+
+## Supported features
+- Product List
+    - Client-side filtering by catagory, name and in stock
+    - Client-side Sorting by name and price
+    - Client-side Pagination
+- Product Details Modal
+- Product Edit Modal
+
+## Trade-offs or assumptions
+- This project was created with Vite, and Vite is incompatibility with Jest according to the documentation[https://jestjs.io/docs/getting-started#using-vite], alternative way is to use Vitest and React Testing Library or use `vite-jest`[https://github.com/haoqunjiang/vite-jest] library.
+- Since aiming to build a scalable structure, I designed to use `bulletproof-react`[https://reacthandbook.dev/project-standards#file-directory-structures] to refer the file directory structure.
+
+## Anything you'd improve with more time
+- Performance analysis and improvement
+- Theme customization: for a real project, we should have a theme customization to match the design of the app.
+- Storybook: a storybook to document the components would benefit the developer if we have a customized component such as Button, Input, etc.
+- Unit tests
+- E2E tests
+- Implement router with file-based routing: As per my experience using file-based routing, I found it more convenient for development since we don't need to map the routes manually.
+- Adding a form library such as react hooks form for to handle the form state
+
+
+
+

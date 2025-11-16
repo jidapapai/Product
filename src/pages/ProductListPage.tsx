@@ -94,6 +94,10 @@ function ProductListPage() {
     [toggleProductDetailModal]
   );
 
+  const handleCreate = useCallback(() => {
+    alert('Navigate to create page');
+  }, []);
+
   const handleDelete = useCallback((row: ProductListItemResponse) => {
     alert(`Delete ${row.name}`);
   }, []);
@@ -113,6 +117,7 @@ function ProductListPage() {
           defaultFilter={DEFAULT_PRODUCT_FILTER_STATE}
           onSubmit={handleSubmitSearch}
           onReset={handleReset}
+          onAdd={handleCreate}
         />
         <ProductList
           data={productList}

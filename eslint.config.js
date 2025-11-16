@@ -38,6 +38,7 @@ export default defineConfig([
         { aliasConfigPath: 'tsconfig.app.json' },
       ],
     },
+    ignorePatterns: ['test-setup.ts'],
   },
   eslintPluginPrettier,
 ]);

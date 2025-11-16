@@ -57,7 +57,7 @@ function ProductDetailModal({
 
   const title = useMemo(() => {
     if (!product) {
-      return '';
+      return 'Create New Product';
     }
     if (mode === EModalMode.VIEW) {
       return `${product.name}`;
@@ -66,13 +66,14 @@ function ProductDetailModal({
   }, [mode, product]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
     const fieldName = e.target.name;
     if (fieldName === 'productName') {
       setProductDetail((prev) => {
         if (!prev) return prev;
         return {
           ...prev,
-          name: e.target.value,
+          name: value,
         };
       });
     }
@@ -82,7 +83,17 @@ function ProductDetailModal({
         if (!prev) return prev;
         return {
           ...prev,
-          description: e.target.value,
+          description: value,
+        };
+      });
+    }
+
+    if (fieldName === 'price') {
+      setProductDetail((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          price: Number(value || 0),
         };
       });
     }
@@ -116,23 +127,25 @@ function ProductDetailModal({
             <CardContent
               sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
             >
-              <Box
-                sx={{
-                  width: '100%',
-                  height: '200px',
-                  textAlign: 'center',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <img
-                  style={{ width: '', height: '100%', objectFit: 'cover' }}
-                  loading="lazy"
-                  src={productDetail?.image || ''}
-                  alt={productDetail?.name || ''}
-                />
-              </Box>
+              {mode !== EModalMode.CREATE && (
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '200px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <img
+                    style={{ width: '', height: '100%', objectFit: 'cover' }}
+                    loading="lazy"
+                    src={productDetail?.image || ''}
+                    alt={productDetail?.name || ''}
+                  />
+                </Box>
+              )}
               <TextField
                 label="Product Name"
                 name="productName"
@@ -165,6 +178,15 @@ function ProductDetailModal({
                 ))}
               </BaseSelect>
               <TextField
+                label="Price"
+                name="price"
+                variant="outlined"
+                type="number"
+                value={productDetail?.price || ''}
+                disabled={mode === EModalMode.VIEW}
+                onChange={handleChange}
+              />
+              <TextField
                 label="Description"
                 variant="outlined"
                 name="description"
@@ -176,7 +198,6 @@ function ProductDetailModal({
               />
               <BaseCheckBoxSingle
                 label="In Stock"
-                name="isInstock"
                 disabled={mode === EModalMode.VIEW}
                 checked={productDetail?.isInstock || false}
                 onChange={(e) => {

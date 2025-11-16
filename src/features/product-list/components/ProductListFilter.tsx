@@ -20,12 +20,14 @@ interface IProductListFilterProps {
   defaultFilter: IProductListFilter;
   onSubmit: (data: Partial<IProductListFilter>) => void;
   onReset: () => void;
+  onAdd: () => void;
 }
 
 function ProductListFilter({
   defaultFilter,
   onSubmit,
   onReset,
+  onAdd,
 }: IProductListFilterProps) {
   const [searchProductName, setSearchProductName] = useState('');
   const [isInStock, setIsInStock] = useState(defaultFilter.isInstock);
@@ -114,7 +116,8 @@ function ProductListFilter({
             />
           </Box>
           <BaseCheckBoxSingle
-            label="In Stock"
+            // label="In Stock"
+            name="isInstock"
             onChange={(e) => {
               setIsInStock(e.target.checked);
             }}
@@ -151,7 +154,7 @@ function ProductListFilter({
               </StyledButton>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <StyledButton onClick={handleReset} variant="contained">
+              <StyledButton onClick={onAdd} variant="contained">
                 Add
               </StyledButton>
             </Box>

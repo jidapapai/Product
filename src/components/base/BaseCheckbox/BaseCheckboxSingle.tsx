@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 interface BaseCheckBoxSingleProps extends CheckboxProps {
-  label: string;
+  label?: string;
 }
 
 function BaseCheckBoxSingle({ label, ...props }: BaseCheckBoxSingleProps) {
@@ -16,7 +16,7 @@ function BaseCheckBoxSingle({ label, ...props }: BaseCheckBoxSingleProps) {
         width: 'fit-contet',
       }}
     >
-      <FormControlLabel control={<Checkbox {...props} />} label={label} />
+      <FormControlLabel control={<Checkbox {...props} />} label={label} data-testid={props.name} />
     </FormGroup>
   );
 }
