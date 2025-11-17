@@ -116,8 +116,7 @@ function ProductListFilter({
             />
           </Box>
           <BaseCheckBoxSingle
-            // label="In Stock"
-            name="isInstock"
+            label="In Stock"
             onChange={(e) => {
               setIsInStock(e.target.checked);
             }}
