@@ -77,7 +77,7 @@ npm run test
 ## Supported features
 - Product List
     - Client-side filtering by catagory, name and in stock
-    - Client-side Sorting by name and price
+    - Client-side Sorting by updated datetime and price
     - Client-side Pagination
 - Product Details Modal
 - Product Edit Modal
